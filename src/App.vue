@@ -1,32 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <div class="app-bgc"></div>
+    <el-row>
+      <el-col :span="4">
+        <Aside/>
+      </el-col>
+      <el-col :span="20">
+        <router-view></router-view>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import router from './router'
+import Aside from './components/Aside'
+import Main from './components/Main'
+import About from './components/About'
+import List from './components/List'
 
-#nav {
-  padding: 30px;
+export default {
+  name: 'app',
+  components: {
+    Aside,
+    Main,
+    About,
+    List
+  },
+  router
 }
+</script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="less" scoped>
+  .app-bgc {
+    background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg);
+    opacity: .2;
+    background-size: cover;
+    filter: blur(30px);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 </style>
